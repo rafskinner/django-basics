@@ -1,0 +1,30 @@
+{% extends 'meetups/base/base.html' %}
+{% load static %}
+
+{% block title %}All Meetups{% endblock %}
+
+{% block site_css %}
+    <link rel="stylesheet" href="{% static 'meetups/styles/all-meetups.css' %}">
+{% endblock %}
+
+{% block header_content %}<p>Find one</p>{% endblock %}
+
+{% block body %}
+    <section>
+        <h2>Upcoming</h2>
+        <ol>
+            {% for meetup in meetups %}
+                {% include "meetups/includes/meetup-item.html" with title=meetup.title location="meetup.location" slug=meetup.slug image=meetup.image.url %}
+            {% endfor %}
+        </ol>
+    </section>
+{% endblock %}
+{#    <h1>All Meetups!</h1>#}
+{#    <p>Hello World</p>#}
+{#    {% if show_meetups %}#}
+{#        {% for meetup in meetups %}#}
+{#            <h2>{{ meetup.title }}</h2>#}
+{#        {% endfor %}#}
+{#    {% else %}#}
+{#        <p>No meetups found</p>#}
+{#    {% endif %}#}
